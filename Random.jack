@@ -1,0 +1,34 @@
+class Random{
+    field int next;
+
+    constructor Random new(){
+        let next = 1;
+        return this;
+    }
+
+    method void mySrand(int seed){
+        let next = seed;
+        return;
+    }
+
+    method int myRand(){
+        var int a;
+        let a = next * 113 + 123;
+        return Random.ostatok(a, 32767);
+    }
+
+    method int Next(int min, int max){
+        var int q, b, d, a;
+        let d = max - min;
+        let a = (max + min) / 2 + 1;
+        let b = Random.ostatok(a, 299);
+        do mySrand(b);
+        return max - Random.ostatok(myRand(), d);
+    }
+
+    function int ostatok(int a, int b){
+        var int q;
+        let q = a / b;
+        return a - (b*q);
+    }
+}
