@@ -1,0 +1,34 @@
+class GameField{
+    field Array pipes;
+    field int pipesCount;
+    field Pipe curr;
+
+    constructor GameField new(int x1, int y1, int x2, int y2, int heigth, int diff)
+    {
+        let pipesCount = 0;
+        let pipes = Array.new(20);
+        let pipes[0] = Pipe.new(x1, y1, x2, y2, heigth, diff);
+        let curr = Pipe.new(x1, y1, x2, y2, heigth, diff);
+        let pipesCount = pipesCount + 1;
+        return this;
+    }
+
+    method void CreatePipe(int x1, int y1, int x2, int y2, int heigth, int diff){
+        let pipes[pipesCount] = Pipe.new(x1, y1, x2, y2, heigth, diff);
+        let pipesCount = pipesCount + 1;
+        return;
+    }
+
+    method void MovePipe(){
+        var int i;
+        let i = 0;
+        while (i<20){
+            let i = i+1;
+            if (~(pipes[i]=0)) {
+                let curr = pipes[i];
+                do curr.move();
+            }
+        }
+        return;
+    }
+}
