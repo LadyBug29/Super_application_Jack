@@ -1,0 +1,48 @@
+function Main.main 2
+push constant 0
+pop local 1
+push constant 481
+push constant 205
+push constant 511
+push constant 255
+push constant 0
+push constant 100
+call GameField.new 6
+pop local 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push local 1
+push constant 1
+add
+pop local 1
+push local 0
+call GameField.MovePipe 1
+pop temp 0
+push constant 100
+call Sys.wait 1
+pop temp 0
+push local 1
+push constant 30
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 481
+push constant 205
+push constant 511
+push constant 255
+push constant 0
+push constant 100
+call GameField.CreatePipe 7
+pop temp 0
+push constant 0
+pop local 1
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

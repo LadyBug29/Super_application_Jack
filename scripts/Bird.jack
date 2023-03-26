@@ -1,0 +1,60 @@
+class Bird {
+    field int x;
+    field int y;
+
+    constructor Bird new(int y){
+		let y = y;
+		let x = 128;
+		do DrawBird(y);
+        return this;
+    }
+
+	method int getY(){
+		return y;
+	}
+
+    method void DrawBird(int location) {
+	var int memAddress;
+	let y = location;
+	let memAddress = 16384+ (32*y) + (x/16);
+	do Memory.poke(memAddress+0, 0);
+	do Memory.poke(memAddress+32, 0);
+	do Memory.poke(memAddress+64, 0);
+	do Memory.poke(memAddress+96, 0);
+	do Memory.poke(memAddress+128, 2016);
+	do Memory.poke(memAddress+160, 2328);
+	do Memory.poke(memAddress+192, 4228);
+	do Memory.poke(memAddress+224, 10370);
+	do Memory.poke(memAddress+256, 10370);
+	do Memory.poke(memAddress+288, 8450);
+	do Memory.poke(memAddress+320, 32286);
+	do Memory.poke(memAddress+352, -32479);
+	do Memory.poke(memAddress+384, 32401);
+	do Memory.poke(memAddress+416, 16649);
+	do Memory.poke(memAddress+448, 15886);
+	do Memory.poke(memAddress+480, 496);
+	return;
+    }
+
+	method void clearBird(){
+		var int memAddress;
+		let memAddress = 16384+(32*y) + (x/16);
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+		return;
+	}
+}
