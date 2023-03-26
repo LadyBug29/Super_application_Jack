@@ -23,10 +23,10 @@ push constant 123
 add
 pop local 0
 push local 0
-push constant 32767
+push constant 10
 call Random.findRemains 2
 return
-function Random.Next 3
+function Random.next 3
 push argument 0
 pop pointer 0
 push argument 2

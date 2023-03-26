@@ -14,10 +14,10 @@ class Random{
     method int myRand(){
         var int randomNumber;
         let randomNumber = next * 113 + 123;
-        return Random.findRemains(randomNumber, 32767);
+        return Random.findRemains(randomNumber, 10);
     }
 
-    method int Next(int min, int max){
+    method int next(int min, int max){
         var int  remains, segment, average;
         let segment = max - min;
         let average = (max + min) / 2 + 1;

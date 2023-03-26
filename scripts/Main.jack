@@ -2,14 +2,20 @@ class Main{
     function void main () {
         var GameField gameField;
         var int ticks;
+        var Bird bird;
+        var Random rnd;
+        let rnd = Random.new();
+        let bird = Bird.new(128);
         let ticks = 0;
-        let gameField = GameField.new(481,205,511,255,0,100);
+        let gameField = GameField.new(481,205,511,255,100);
+        do BeautifulInscription.printInscription();
         while (true){
             let ticks = ticks + 1;
-            do gameField.MovePipe();
-            do Sys.wait(100);
+            do gameField.movePipe();
+            do bird.move();
+            do Sys.wait(10);
             if (ticks>60){
-                do gameField.CreatePipe(481,205,511,255,0,100);
+                do gameField.createPipe(481,bird.getY(),511,255,50);
                 let ticks = 0;
             }
         }

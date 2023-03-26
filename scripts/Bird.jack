@@ -1,11 +1,17 @@
 class Bird {
     field int x;
     field int y;
+	field int g;
+	field int velocity;
+    field int acceleration;
 
     constructor Bird new(int y){
 		let y = y;
 		let x = 128;
-		do DrawBird(y);
+		let g = 10;
+        let velocity = 0;
+        let acceleration = 0;
+		do drawBird(y);
         return this;
     }
 
@@ -13,10 +19,10 @@ class Bird {
 		return y;
 	}
 
-    method void DrawBird(int location) {
+    method void drawBird(int location) {
 	var int memAddress;
 	let y = location;
-	let memAddress = 16384+ (32*y) + (x/16);
+	let memAddress = 16384 + (32*y) + (x/16);
 	do Memory.poke(memAddress+0, 0);
 	do Memory.poke(memAddress+32, 0);
 	do Memory.poke(memAddress+64, 0);
@@ -56,5 +62,21 @@ class Bird {
 		do Memory.poke(memAddress+448, 0);
 		do Memory.poke(memAddress+480, 0);
 		return;
+	}
+
+	method void move(){
+            if(Keyboard.keyPressed() = 131){
+                let velocity = g / 2;
+                let acceleration = 0;
+            }
+            if(~(Keyboard.keyPressed() = 131)){
+                let acceleration = g / 10;
+                let velocity = velocity - acceleration;
+            } 
+
+            do clearBird();
+            do drawBird(y - velocity);
+            do Sys.wait(50);
+        return;
 	}
 }

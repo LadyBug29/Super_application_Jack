@@ -1,0 +1,12 @@
+class BeautifulInscription{
+    function void printInscription(){
+        while(~(Keyboard.keyPressed() = 131)){
+            do Output.moveCursor(8,20);
+            do Output.printString("Press key up");
+            do Sys.wait(100);
+        }
+        do Output.moveCursor(0,0);
+        do Screen.clearScreen();
+        return;
+    }
+}

@@ -3,18 +3,18 @@ class GameField{
     field int pipesCount;
     field Pipe curr;
 
-    constructor GameField new(int x1, int y1, int x2, int y2, int heigth, int diff)
+    constructor GameField new(int x1, int y1, int x2, int y2, int diff)
     {
         let pipesCount = 0;
         let pipes = Array.new(10);
-        let pipes[0] = Pipe.new(x1, y1, x2, y2, heigth, diff);
-        let curr = Pipe.new(x1, y1, x2, y2, heigth, diff);
+        let pipes[0] = Pipe.new(x1, y1, x2, y2, diff);
+        let curr = Pipe.new(x1, y1, x2, y2, diff);
         let pipesCount = pipesCount + 1;
         return this;
     }
 
-    method void CreatePipe(int x1, int y1, int x2, int y2, int heigth, int diff){
-        let pipes[pipesCount] = Pipe.new(x1, y1, x2, y2, heigth, diff);
+    method void createPipe(int x1, int y1, int x2, int y2, int diff){
+        let pipes[pipesCount] = Pipe.new(x1, y1, x2, y2, diff);
         let pipesCount = pipesCount + 1;
         if (pipesCount>9){
             let pipesCount = pipesCount - 10;
@@ -22,7 +22,7 @@ class GameField{
         return;
     }
 
-    method void MovePipe(){
+    method void movePipe(){
         var int i;
         let i = 0;
         while (i<10){
