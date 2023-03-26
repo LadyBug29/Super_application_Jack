@@ -8,7 +8,7 @@ class Main{
             let ticks = ticks + 1;
             do gameField.MovePipe();
             do Sys.wait(100);
-            if (ticks>30){
+            if (ticks>60){
                 do gameField.CreatePipe(481,205,511,255,0,100);
                 let ticks = 0;
             }
