@@ -11,7 +11,7 @@ class Bird {
 		let g = 10;
         let velocity = 0;
         let acceleration = 0;
-		do drawBird(y);
+		do drawBirdUpWings(y);
         return this;
     }
 
@@ -19,7 +19,7 @@ class Bird {
 		return y;
 	}
 
-    method void drawBird(int location) {
+    method void drawBirdDownWings(int location) {
 	var int memAddress;
 	let y = location;
 	let memAddress = 16384 + (32*y) + (x/16);
@@ -38,6 +38,29 @@ class Bird {
 	do Memory.poke(memAddress+384, 32401);
 	do Memory.poke(memAddress+416, 16649);
 	do Memory.poke(memAddress+448, 15886);
+	do Memory.poke(memAddress+480, 496);
+	return;
+    }
+
+    method void drawBirdUpWings(int location) {
+	var int memAddress;
+	let y = location;
+	let memAddress = 16384 + (32*y) + (x/16);
+	do Memory.poke(memAddress+0, 0);
+	do Memory.poke(memAddress+32, 0);
+	do Memory.poke(memAddress+64, 0);
+	do Memory.poke(memAddress+96, 0);
+	do Memory.poke(memAddress+128, 2016);
+	do Memory.poke(memAddress+160, 2328);
+	do Memory.poke(memAddress+192, 4238);
+	do Memory.poke(memAddress+224, 10377);
+	do Memory.poke(memAddress+256, 10385);
+	do Memory.poke(memAddress+288, 8481);
+	do Memory.poke(memAddress+320, 32286);
+	do Memory.poke(memAddress+352, -32479);
+	do Memory.poke(memAddress+384, 32385);
+	do Memory.poke(memAddress+416, 16641);
+	do Memory.poke(memAddress+448, 15882);
 	do Memory.poke(memAddress+480, 496);
 	return;
     }
@@ -75,8 +98,13 @@ class Bird {
             } 
 
             do clearBird();
-            do drawBird(y - velocity);
-            do Sys.wait(50);
+			if(velocity < 0){
+				do drawBirdDownWings(y - velocity);
+			}
+			if(~(velocity < 0)){
+            	do drawBirdUpWings(y - velocity);
+			}
+            do Sys.wait(30);
         return;
 	}
 }

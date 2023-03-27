@@ -1,9 +1,11 @@
 function Random.new 0
-push constant 1
+push constant 2
 call Memory.alloc 1
 pop pointer 0
 push constant 1
 pop this 0
+push constant 1
+pop this 1
 push pointer 0
 return
 function Random.mySrand 0
@@ -23,16 +25,16 @@ push constant 123
 add
 pop local 0
 push local 0
-push constant 10
-call Random.findRemains 2
+push this 1
+add
 return
-function Random.next 3
+function Random.next 2
 push argument 0
 pop pointer 0
 push argument 2
 push argument 1
 sub
-pop local 1
+pop this 1
 push argument 2
 push argument 1
 add
@@ -40,8 +42,8 @@ push constant 2
 call Math.divide 2
 push constant 1
 add
-pop local 2
-push local 2
+pop local 1
+push local 1
 push constant 299
 call Random.findRemains 2
 pop local 0
@@ -52,11 +54,29 @@ pop temp 0
 push argument 2
 push pointer 0
 call Random.myRand 1
-push local 1
-call Random.findRemains 2
 sub
 return
 function Random.findRemains 1
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+neg
+pop argument 0
+label IF_FALSE0
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 1
+neg
+pop argument 1
+label IF_FALSE1
 push argument 0
 push argument 1
 call Math.divide 2

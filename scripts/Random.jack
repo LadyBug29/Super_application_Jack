@@ -1,8 +1,10 @@
 class Random{
     field int next;
+    field int segment;
 
     constructor Random new(){
         let next = 1;
+        let segment = 1;
         return this;
     }
 
@@ -14,20 +16,26 @@ class Random{
     method int myRand(){
         var int randomNumber;
         let randomNumber = next * 113 + 123;
-        return Random.findRemains(randomNumber, 10);
+        return randomNumber + segment;
     }
 
     method int next(int min, int max){
-        var int  remains, segment, average;
+        var int  remains, average;
         let segment = max - min;
         let average = (max + min) / 2 + 1;
         let remains = Random.findRemains(average, 299);
         do mySrand(remains);
-        return max - Random.findRemains(myRand(), segment);
+        return max - myRand();
     }
 
     function int findRemains(int f, int h){
         var int q;
+        if(f<0){
+            let f = -f;
+        }
+        if(h<0){
+            let h = -h;
+        }
         let q = f / h;
         return f - (h*q);
     }

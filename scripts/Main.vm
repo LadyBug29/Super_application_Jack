@@ -1,4 +1,4 @@
-function Main.main 4
+function Main.main 5
 call Random.new 0
 pop local 3
 push constant 128
@@ -6,15 +6,15 @@ call Bird.new 1
 pop local 2
 push constant 0
 pop local 1
+call BeautifulInscription.printInscription 0
+pop temp 0
 push constant 481
 push constant 205
 push constant 511
 push constant 255
-push constant 100
+push constant 50
 call GameField.new 5
 pop local 0
-call BeautifulInscription.printInscription 0
-pop temp 0
 label WHILE_EXP0
 push constant 0
 not
@@ -30,19 +30,27 @@ pop temp 0
 push local 2
 call Bird.move 1
 pop temp 0
-push constant 10
+push constant 5
 call Sys.wait 1
 pop temp 0
 push local 1
-push constant 60
+push constant 50
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 0
-push constant 481
+push local 3
 push local 2
 call Bird.getY 1
+push constant 255
+call Random.next 3
+pop local 4
+push local 4
+call Output.printInt 1
+pop temp 0
+push local 0
+push constant 481
+push local 4
 push constant 511
 push constant 255
 push constant 50
