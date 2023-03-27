@@ -23,22 +23,18 @@ class Bird {
 	var int memAddress;
 	let y = location;
 	let memAddress = 16384 + (32*y) + (x/16);
-	do Memory.poke(memAddress+0, 0);
-	do Memory.poke(memAddress+32, 0);
-	do Memory.poke(memAddress+64, 0);
-	do Memory.poke(memAddress+96, 0);
-	do Memory.poke(memAddress+128, 2016);
-	do Memory.poke(memAddress+160, 2328);
-	do Memory.poke(memAddress+192, 4228);
-	do Memory.poke(memAddress+224, 10370);
-	do Memory.poke(memAddress+256, 10370);
-	do Memory.poke(memAddress+288, 8450);
-	do Memory.poke(memAddress+320, 32286);
-	do Memory.poke(memAddress+352, -32479);
-	do Memory.poke(memAddress+384, 32401);
-	do Memory.poke(memAddress+416, 16649);
-	do Memory.poke(memAddress+448, 15886);
-	do Memory.poke(memAddress+480, 496);
+	do Memory.poke(memAddress, 2016);
+	do Memory.poke(memAddress+32, 2328);
+	do Memory.poke(memAddress+64, 4228);
+	do Memory.poke(memAddress+96, 10370);
+	do Memory.poke(memAddress+128, 10370);
+	do Memory.poke(memAddress+160, 8450);
+	do Memory.poke(memAddress+192, 32286);
+	do Memory.poke(memAddress+224, -32479);
+	do Memory.poke(memAddress+256, 32401);
+	do Memory.poke(memAddress+288, 16649);
+	do Memory.poke(memAddress+320, 15886);
+	do Memory.poke(memAddress+352, 496);
 	return;
     }
 
@@ -46,29 +42,25 @@ class Bird {
 	var int memAddress;
 	let y = location;
 	let memAddress = 16384 + (32*y) + (x/16);
-	do Memory.poke(memAddress+0, 0);
-	do Memory.poke(memAddress+32, 0);
-	do Memory.poke(memAddress+64, 0);
-	do Memory.poke(memAddress+96, 0);
-	do Memory.poke(memAddress+128, 2016);
-	do Memory.poke(memAddress+160, 2328);
-	do Memory.poke(memAddress+192, 4238);
-	do Memory.poke(memAddress+224, 10377);
-	do Memory.poke(memAddress+256, 10385);
-	do Memory.poke(memAddress+288, 8481);
-	do Memory.poke(memAddress+320, 32286);
-	do Memory.poke(memAddress+352, -32479);
-	do Memory.poke(memAddress+384, 32385);
-	do Memory.poke(memAddress+416, 16641);
-	do Memory.poke(memAddress+448, 15882);
-	do Memory.poke(memAddress+480, 496);
+	do Memory.poke(memAddress, 2016);
+	do Memory.poke(memAddress+32, 2328);
+	do Memory.poke(memAddress+64, 4238);
+	do Memory.poke(memAddress+96, 10377);
+	do Memory.poke(memAddress+128, 10385);
+	do Memory.poke(memAddress+160, 8481);
+	do Memory.poke(memAddress+192, 32286);
+	do Memory.poke(memAddress+224, -32479);
+	do Memory.poke(memAddress+256, 32385);
+	do Memory.poke(memAddress+288, 16641);
+	do Memory.poke(memAddress+320, 15882);
+	do Memory.poke(memAddress+352, 496);
 	return;
     }
 
 	method void clearBird(){
 		var int memAddress;
 		let memAddress = 16384+(32*y) + (x/16);
-		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress, 0);
 		do Memory.poke(memAddress+32, 0);
 		do Memory.poke(memAddress+64, 0);
 		do Memory.poke(memAddress+96, 0);
@@ -80,22 +72,39 @@ class Bird {
 		do Memory.poke(memAddress+288, 0);
 		do Memory.poke(memAddress+320, 0);
 		do Memory.poke(memAddress+352, 0);
-		do Memory.poke(memAddress+384, 0);
-		do Memory.poke(memAddress+416, 0);
-		do Memory.poke(memAddress+448, 0);
-		do Memory.poke(memAddress+480, 0);
 		return;
 	}
 
 	method void move(){
-            if(Keyboard.keyPressed() = 131){
+            if(Keyboard.keyPressed() = 32){
                 let velocity = g / 2;
                 let acceleration = 0;
             }
-            if(~(Keyboard.keyPressed() = 131)){
+            if(~(Keyboard.keyPressed() = 32)){
                 let acceleration = g / 10;
                 let velocity = velocity - acceleration;
             } 
+
+			if(Random.findRemains(Memory.peek(16384 + (32*y) + (x/16) + 1), 2) = 1){
+				do Screen.clearScreen();
+				do Output.moveCursor(10,15);
+				do Output.printString("GameOver");
+				do Sys.Wait(100);
+			}
+
+			if(~(Memory.peek(16384 + (32*y) + (x/16) - 32) = 0)){
+				do Screen.clearScreen();
+				do Output.moveCursor(10,15);
+				do Output.printString("GameOver");
+				do Sys.Wait(100);
+			}
+
+			if(~(Memory.peek(16384 + (32*y) + (x/16) + (32*12)) = 0)){
+				do Screen.clearScreen();
+				do Output.moveCursor(10,15);
+				do Output.printString("GameOver");
+				do Sys.Wait(100);
+			}
 
             do clearBird();
 			if(velocity < 0){
@@ -104,7 +113,7 @@ class Bird {
 			if(~(velocity < 0)){
             	do drawBirdUpWings(y - velocity);
 			}
-            do Sys.wait(30);
+            do Sys.wait(27);
         return;
 	}
 }

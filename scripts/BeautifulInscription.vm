@@ -1,7 +1,9 @@
-function BeautifulInscription.printInscription 0
+function BeautifulInscription.printInscription 1
+push constant 0
+pop local 0
 label WHILE_EXP0
 call Keyboard.keyPressed 0
-push constant 131
+push constant 32
 eq
 not
 not
@@ -10,7 +12,11 @@ push constant 8
 push constant 20
 call Output.moveCursor 2
 pop temp 0
-push constant 12
+push local 0
+push constant 1
+add
+pop local 0
+push constant 15
 call String.new 1
 push constant 80
 call String.appendChar 2
@@ -32,9 +38,15 @@ push constant 121
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-push constant 117
+push constant 115
 call String.appendChar 2
 push constant 112
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
@@ -49,5 +61,5 @@ call Output.moveCursor 2
 pop temp 0
 call Screen.clearScreen 0
 pop temp 0
-push constant 0
+push local 0
 return

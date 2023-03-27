@@ -4,13 +4,13 @@ class Main{
         var int ticks;
         var Bird bird;
         var Random rnd;
-        var int a;
+        var int a, b;
         let rnd = Random.new();
         let bird = Bird.new(128);
         let ticks = 0;
-        
-        do BeautifulInscription.printInscription();
-        let gameField = GameField.new(481,205,511,255,50);
+
+        let b = BeautifulInscription.printInscription();
+        let gameField = GameField.new(481,rnd.next(b, 255),511,255,50);
         while (true){
             let ticks = ticks + 1;
             do gameField.movePipe();
