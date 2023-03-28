@@ -45,7 +45,7 @@ add
 pop local 1
 push local 1
 push constant 299
-call Random.findRemains 2
+call MathExtensions.findRemains 2
 pop local 0
 push pointer 0
 push local 0
@@ -54,36 +54,5 @@ pop temp 0
 push argument 2
 push pointer 0
 call Random.myRand 1
-sub
-return
-function Random.findRemains 1
-push argument 0
-push constant 0
-lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push argument 0
-neg
-pop argument 0
-label IF_FALSE0
-push argument 1
-push constant 0
-lt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push argument 1
-neg
-pop argument 1
-label IF_FALSE1
-push argument 0
-push argument 1
-call Math.divide 2
-pop local 0
-push argument 0
-push argument 1
-push local 0
-call Math.multiply 2
 sub
 return

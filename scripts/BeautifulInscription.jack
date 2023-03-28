@@ -1,15 +1,33 @@
 class BeautifulInscription{
-    function int printInscription(){
-        var int tick;
-        let tick = 0;
+    field int ticks;
+
+    constructor BeautifulInscription new(){
+        let ticks = 0;
+        return this;
+    }
+
+    method void printInscription(){
+        let ticks = 0;
         while(~(Keyboard.keyPressed() = 32)){
             do Output.moveCursor(8,20);
-            let tick = tick + 1;
+            let ticks = ticks + 1;
             do Output.printString("Press key space");
             do Sys.wait(100);
         }
         do Output.moveCursor(0,0);
         do Screen.clearScreen();
-        return tick;
+        return;
+    }
+
+    method int getTicks(){
+        return ticks;
+    }
+    
+    function void printGameOver(){
+        do Screen.clearScreen();
+		do Output.moveCursor(10,15);
+		do Output.printString("GameOver");
+		do Sys.Wait(100);
+        return;
     }
 }

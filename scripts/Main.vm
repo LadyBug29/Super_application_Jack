@@ -1,4 +1,4 @@
-function Main.main 6
+function Main.main 5
 call Random.new 0
 pop local 3
 push constant 128
@@ -6,11 +6,15 @@ call Bird.new 1
 pop local 2
 push constant 0
 pop local 1
-call BeautifulInscription.printInscription 0
-pop local 5
+call BeautifulInscription.new 0
+pop local 4
+push local 4
+call BeautifulInscription.printInscription 1
+pop temp 0
 push constant 481
 push local 3
-push local 5
+push local 4
+call BeautifulInscription.getTicks 1
 push constant 255
 call Random.next 3
 push constant 511
@@ -42,18 +46,13 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+push local 0
+push constant 481
 push local 3
 push local 2
 call Bird.getY 1
 push constant 255
 call Random.next 3
-pop local 4
-push local 4
-call Output.printInt 1
-pop temp 0
-push local 0
-push constant 481
-push local 4
 push constant 511
 push constant 255
 push constant 50

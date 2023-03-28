@@ -1,0 +1,17 @@
+class MathExtensions{
+    function int abs(int f){
+        if(f<0){
+            let f = -f;
+        }
+        return f;
+    }
+
+    function int findRemains(int f, int h){
+        var int q;
+        let f = MathExtensions.abs(f);
+        let h = MathExtensions.abs(h);
+        let q = f / h;
+        return f - (h*q);
+    }
+
+}

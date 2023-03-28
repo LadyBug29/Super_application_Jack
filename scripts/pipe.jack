@@ -3,24 +3,24 @@ class Pipe{
     field int Y1;
     field int X2;
     field int Y2;
-    field int Diff;
+    field int difference;
     field int ended;
     constructor Pipe new(int x1, int y1, int x2, int y2, int diff)
     {
         let X1 = x1;
-        let Y1 = Random.findRemains(y1, 255 - diff);
+        let Y1 = MathExtensions.findRemains(y1, 255 - diff);
         let X2 = x2;
         let Y2 = y2;
-        let Diff = diff;
+        let difference = diff;
         let ended = 0;
-        do draw();
+        do drawPipe();
         return this;
     }
 
-    method void draw(){
+    method void drawPipe(){
         do Screen.setColor(true);
         do Screen.drawRectangle(X1, 0, X2, Y1);
-        do Screen.drawRectangle(X1, Y1 + Diff, X2, Y2);
+        do Screen.drawRectangle(X1, Y1 + difference, X2, Y2);
         return;
     }
 
@@ -36,17 +36,17 @@ class Pipe{
         if (~(X2=0)){
             do Screen.setColor(false);
             do Screen.drawRectangle(X1 +3 , 0, X2 + 3, Y1);
-            do Screen.drawRectangle(X1 + 3, Y1 + Diff, X2 + 3, Y2);
+            do Screen.drawRectangle(X1 + 3, Y1 + difference, X2 + 3, Y2);
             do Screen.setColor(true);
             do Screen.drawRectangle(X1, 0, X2, Y1);
-            do Screen.drawRectangle(X1, Y1 + Diff, X2, Y2);
+            do Screen.drawRectangle(X1, Y1 + difference, X2, Y2);
         }
         if (X2=0){
             if (ended=0){
                 let ended = 1;
                 do Screen.setColor(false);
                 do Screen.drawRectangle(0, Y1, 3, Y2);
-                do Screen.drawRectangle(0, 0, 3, Y2-Diff);
+                do Screen.drawRectangle(0, 0, 3, Y2-difference);
             }
         }
         return;

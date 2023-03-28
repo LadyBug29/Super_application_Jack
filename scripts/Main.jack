@@ -4,21 +4,22 @@ class Main{
         var int ticks;
         var Bird bird;
         var Random rnd;
-        var int a, b;
+        var BeautifulInscription inscription;
+
         let rnd = Random.new();
         let bird = Bird.new(128);
         let ticks = 0;
+        let inscription = BeautifulInscription.new();
 
-        let b = BeautifulInscription.printInscription();
-        let gameField = GameField.new(481,rnd.next(b, 255),511,255,50);
+        do inscription.printInscription();
+        let gameField = GameField.new(481,rnd.next(inscription.getTicks(), 255),511,255,50);
         while (true){
             let ticks = ticks + 1;
             do gameField.movePipe();
             do bird.move();
             do Sys.wait(5);
             if (ticks>50){
-                let a = rnd.next(bird.getY(), 255);
-                do gameField.createPipe(481,a,511,255,50);
+                do gameField.createPipe(481,rnd.next(bird.getY(), 255),511,255,50);
                 let ticks = 0;
             }
         }

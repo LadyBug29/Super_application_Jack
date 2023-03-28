@@ -19,24 +19,12 @@ class Random{
         return randomNumber + segment;
     }
 
-    method int next(int min, int max){
+    method int next(int number1, int number2){
         var int  remains, average;
-        let segment = max - min;
-        let average = (max + min) / 2 + 1;
-        let remains = Random.findRemains(average, 299);
+        let segment = number2 - number1;
+        let average = (number2 + number1) / 2 + 1;
+        let remains = MathExtensions.findRemains(average, 299);
         do mySrand(remains);
-        return max - myRand();
-    }
-
-    function int findRemains(int f, int h){
-        var int q;
-        if(f<0){
-            let f = -f;
-        }
-        if(h<0){
-            let h = -h;
-        }
-        let q = f / h;
-        return f - (h*q);
+        return number2 - myRand();
     }
 }

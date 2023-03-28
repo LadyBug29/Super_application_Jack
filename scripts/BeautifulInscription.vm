@@ -1,6 +1,16 @@
-function BeautifulInscription.printInscription 1
+function BeautifulInscription.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
 push constant 0
-pop local 0
+pop this 0
+push pointer 0
+return
+function BeautifulInscription.printInscription 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 0
 label WHILE_EXP0
 call Keyboard.keyPressed 0
 push constant 32
@@ -12,10 +22,10 @@ push constant 8
 push constant 20
 call Output.moveCursor 2
 pop temp 0
-push local 0
+push this 0
 push constant 1
 add
-pop local 0
+pop this 0
 push constant 15
 call String.new 1
 push constant 80
@@ -61,5 +71,42 @@ call Output.moveCursor 2
 pop temp 0
 call Screen.clearScreen 0
 pop temp 0
-push local 0
+push constant 0
+return
+function BeautifulInscription.getTicks 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function BeautifulInscription.printGameOver 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 10
+push constant 15
+call Output.moveCursor 2
+pop temp 0
+push constant 8
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 100
+call Sys.Wait 1
+pop temp 0
+push constant 0
 return
