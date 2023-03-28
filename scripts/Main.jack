@@ -18,7 +18,6 @@ class Main{
             do Sys.wait(5);
             if (ticks>50){
                 let a = rnd.next(bird.getY(), 255);
-                do Output.printInt(a);
                 do gameField.createPipe(481,a,511,255,50);
                 let ticks = 0;
             }
