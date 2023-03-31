@@ -380,7 +380,7 @@ push pointer 0
 call Bird.clearBird 1
 pop temp 0
 push this 3
-push constant 0
+push constant 2
 lt
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -389,11 +389,11 @@ push pointer 0
 push this 1
 push this 3
 sub
-call Bird.drawBirdDownWings 2
+call Bird.drawBirdUpWings 2
 pop temp 0
 label IF_FALSE2
 push this 3
-push constant 0
+push constant 2
 lt
 not
 if-goto IF_TRUE3
@@ -403,7 +403,7 @@ push pointer 0
 push this 1
 push this 3
 sub
-call Bird.drawBirdUpWings 2
+call Bird.drawBirdDownWings 2
 pop temp 0
 label IF_FALSE3
 push constant 27

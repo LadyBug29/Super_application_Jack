@@ -10,7 +10,7 @@ class BeautifulInscription{
         let ticks = 0;
         while(~(Keyboard.keyPressed() = 32)){
             do Output.moveCursor(8,20);
-            let ticks = ticks + 1;
+            let ticks = MathExtensions.findRemains(ticks + 1, 32766);
             do Output.printString("Press key space");
             do Sys.wait(100);
         }
